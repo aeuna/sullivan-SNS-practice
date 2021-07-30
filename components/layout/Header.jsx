@@ -26,21 +26,7 @@ const useStyles = makeStyles(() => ({
 
 const Header = () => {
   const classes = useStyles();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    getUser();
-  }, []);
-
-  async function getUser() {
-    try {
-      const fetchUserInfo = await fetch("/api/user");
-      const userInfo = await fetchUserInfo.json();
-      setUser(userInfo);
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  const displayName = "설리번 선생님";
 
   return (
     <div className={classes.grow}>
@@ -65,11 +51,9 @@ const Header = () => {
                 color="inherit"
               >
                 <AccountCircle />
-                {user && (
-                  <Typography variant="h6" noWrap>
-                    {user.displayName} 님 반갑습니다
-                  </Typography>
-                )}
+                <Typography variant="h6" noWrap>
+                  {displayName} 님 반갑습니다
+                </Typography>
               </IconButton>
             </Link>
             <NotificationMenu />

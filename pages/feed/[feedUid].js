@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const detail = () => {
+  const classes = useStyles();
   return (
     <Grid container className={classes.container}>
       <Grid item xs={8} className={classes.feed}>

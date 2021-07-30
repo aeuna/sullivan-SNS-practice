@@ -1,15 +1,15 @@
+import React from "react";
 import { Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   imgContainer: {
     overflow: "hidden",
-    width: "400px",
-    height: "400px",
+    width: "100%",
+    height: "100%",
   },
   feedImg: {
-    padding: theme.spacing(1),
-    maxWidth: "100%",
+    margin: "0 auto",
     height: "400px",
     width: "400px",
     display: "block",
@@ -20,13 +20,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PhotoItem = ({ feed }) => {
+const PhotoItem = (
+  {
+    /* 전달받은 props를 써주세요. */
+  }
+) => {
   const classes = useStyles();
 
   return (
     <>
       <Grid item md={4} sm={6} xs={12}>
-        <div className={classes.imgContainer}>{/* 이미지를 추가하세요. */}</div>
+        <div className={classes.imgContainer}>
+          {/* 삼항연산자를 사용해주세요. */}
+          {/* img태그 내, className 은 useStyles의 feedImg를 꼭 써주세요. */}
+          {/* 전달받은 props를 이용하여 이미지 url이 있는 경우, 피드 이미지를 보여주세요. */}
+          {/* 전달받은 props를 이용하여 이미지 url이 없는 경우 (글만 작성 한 경우), img 태그를 써서 피드를 쓴 사람의 프로필 이미지를 보여주세요. */}
+          {/* 도전! 이미지를 누르면 피드의 상세페이지로 이동 할 수 있도록 해주세요. 구글에 검색해서 어떻게 구성하면 좋을 지 한번 찾아보세요. */}
+        </div>
       </Grid>
     </>
   );
