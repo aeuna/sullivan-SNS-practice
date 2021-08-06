@@ -11,7 +11,7 @@ const db = firebase.firestore();
 async function getUserInfo() {
   const userRef = db.collection("myuser").doc(userId);
   const userDoc = await userRef.get();
-  const userInfo = await userDoc.data();
+  const userInfo = userDoc.data();
   return userInfo;
 }
 

@@ -37,8 +37,8 @@ async function deleteFeed(feedUid, userId) {
   // 사용자 피드 리스트 업데이트
   const userRef = db.collection("myuser").doc(userId);
   const userSnapshot = await userRef.get();
-  const userFeedList = await userSnapshot.data().feedList;
-  const userLikeFeeds = await await userSnapshot.data().likeFeeds;
+  const userFeedList = userSnapshot.data().feedList;
+  const userLikeFeeds = userSnapshot.data().likeFeeds;
 
   const newFeedList = userFeedList.filter((feed) => {
     return feed.feedId !== feedUid;

@@ -53,7 +53,7 @@ async function createFeed(createData) {
   // 사용자 피드 리스트 업데이트
   const userRef = db.collection("myuser").doc(createData.author.uid);
   const userSnapshot = await userRef.get();
-  const userFeedList = await userSnapshot.data().feedList;
+  const userFeedList = userSnapshot.data().feedList;
   let newFeedList;
   if (userFeedList) {
     newFeedList = [...userFeedList, { feedId: createData.uid }];
