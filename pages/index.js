@@ -8,7 +8,7 @@ const index = () => {
     getUser();
   }, []);
 
-  function getUser() {
+  async function getUser() {
     try {
       /* 1. api를 통해 접속한 유저의 정보를 가져오세요. */
       const fetchUserInfo = await fetch(/*채워주세요*/);
