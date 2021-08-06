@@ -23,7 +23,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const UploadForm = ({ feedUid }) => {
+const UploadForm = () => {
   const router = useRouter();
   const classes = useStyles();
   const uid = uuidv4();
@@ -41,10 +41,6 @@ const UploadForm = ({ feedUid }) => {
   const fileButton = useRef();
 
   useEffect(() => {
-    if (feedUid) {
-      setUpdateMode(true);
-      getFeedDetail();
-    }
     getUser();
   }, []);
 
