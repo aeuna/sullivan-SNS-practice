@@ -55,21 +55,25 @@ const Feed = ({ feed, user, likeFeeds, setLikeFeeds }) => {
         {/*  - title은 피드를 쓴 사람의 이름을 전달해주세요. */}
         {/*  - subheader는 생성날짜와 지역을 합친 string을 전달해주세요. */}
         <CardHeader
-          avatar={/* 채워주세요 */}
-          title={/* 채워주세요 */}
-          subheader={/* 채워주세요 */}
+          avatar={<Avatar size={1} photoUrl={feed.author.photoUrl} />}
+          title={feed.author.displayName}
+          subheader={createAT + " " + feed.location}
         />
         {/* 2. 피드의 이미지가 있다면 CradMedia가 보이도록 해주세요. (아래의 코드에 추가) */}
         {/* - CradMedia의 image로 피드의 이미지를 전달해주세요. */}
-        <CardMedia className={classes.media} image={/* 채워주세요 */} />
+        {feed.photoUrl && (
+          <CardMedia className={classes.media} image={feed.photoUrl} />
+        )}
         <CardContent>
           <Typography variant="body1" component="p">
             {/* 3. 피드의 글을 보여주세요. (아래의 코드에 추가) */}
             {/* 도전!! 피드의 글의 길이가 180자를 넘는다면 179자까지 나타나고 그 뒤는 ... 처리를 해주세요. */}
-            {/* 채워주세요 */}
+            {feed.content.length < 180
+              ? feed.content
+              : feed.content.slice(0, 180) + "..."}
           </Typography>
           {/* 4. 더보기를 누르면, 피드의 디테일 화면으로 이동할수있게 해주세요. */}
-          <Link href={/* 채워주세요 */}>
+          <Link href={`/feed/${feed.uid}`}>
             <Typography
               variant="body2"
               color="textSecondary"
