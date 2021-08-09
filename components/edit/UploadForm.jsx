@@ -43,6 +43,10 @@ const UploadForm = () => {
   const fileButton = useRef();
 
   useEffect(() => {
+    if (feedUid) {
+      setUpdateMode(true);
+      getFeedDetail();
+    }
     getUser();
   }, []);
 
@@ -77,7 +81,21 @@ const UploadForm = () => {
     fileButton.current.click();
   }
 
-  async function getFeedDetail() {}
+  async function getFeedDetail() {
+    try {
+      /* 1.한 피드의 디테일 정보를 가져오는 api를 요청해주세요. */
+      const fetchFeedDetail = await fetch(/* 채워주세요. */);
+      const feedDetail = await fetchFeedDetail.json();
+
+      /* 2.가져온 데이터를 가지고 알맞은 상태변화를 시켜주세요. (4가지) */
+      /* 채워주세요. */
+      /* 채워주세요. */
+      /* 채워주세요. */
+      /* 채워주세요. */
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   async function submitHandler(event) {
     event.preventDefault();
@@ -125,7 +143,34 @@ const UploadForm = () => {
     }
   }
 
-  async function updateFeed() {}
+  async function updateFeed() {
+    /* 1. 피드를 업데이트 하기 위해, api에 전달해야하는 인자를 적어주세요 (4가지) */
+    const updateParams = {
+      /* 채워주세요. */
+      /* 채워주세요. */
+      /* 채워주세요. */
+      /* 채워주세요. */
+    };
+
+    try {
+      /* 2. 피드의 업데이트를 위한 api에 요청을 보내주세요. */
+      const updateResult = await fetch(/* 채워주세요. */, {
+        method: /* 채워주세요. */,
+        body: JSON.stringify(updateParams),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      const { message } = await updateResult.json();
+
+      router.push({
+        pathname: "/feed",
+        query: { message },
+      });
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <>
