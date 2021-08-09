@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "../common/Avatar";
-import ProfileUpdatePopup from "../myfeed/ProfileUpdatePopup";
 
 const useStyles = makeStyles(() => ({
   profile: {
@@ -10,7 +9,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Profile = ({ user, getUserInfo }) => {
+const Profile = ({ user }) => {
   const classes = useStyles();
 
   return (
@@ -69,7 +68,6 @@ const Profile = ({ user, getUserInfo }) => {
                 </a>
               </Typography>
             </Grid>
-            <ProfileUpdatePopup user={user} getUserInfo={getUserInfo} />
           </Grid>
         </Grid>
       </Grid>

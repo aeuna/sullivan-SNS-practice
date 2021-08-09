@@ -44,10 +44,7 @@ const ProfileUpdatePopup = ({ user, getUserInfo }) => {
   /* 팝업창 오픈 상태 */
   const [open, setOpen] = useState(false);
   /* form 입력 데이터 상태 */
-  const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
-  const [displayName, setDisplayName] = useState(user.displayName);
-  const [webpage, setWebpage] = useState(user.webpage);
-  const [caption, setCaption] = useState(user.caption);
+
   /* 사진 첨부 시 로딩 상태 */
   const [loading, setLoading] = useState(false);
   /* 업데이트 결과 메세지 상태 */
@@ -73,12 +70,7 @@ const ProfileUpdatePopup = ({ user, getUserInfo }) => {
   async function submitHandler(event) {
     event.preventDefault();
 
-    const updateData = {
-      photoUrl,
-      displayName,
-      webpage,
-      caption,
-    };
+    const updateData = {};
 
     try {
       await updateUserProfile(updateData);
@@ -89,21 +81,7 @@ const ProfileUpdatePopup = ({ user, getUserInfo }) => {
     }
   }
 
-  async function updateUserProfile(updateData) {
-    try {
-      const updateResult = await fetch(`/api/user`, {
-        method: "PATCH",
-        body: JSON.stringify(updateData),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-      const { message } = await updateResult.json();
-      setResultMessage(message);
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  async function updateUserProfile(updateData) {}
 
   return (
     <div>
