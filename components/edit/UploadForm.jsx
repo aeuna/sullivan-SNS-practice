@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const UploadForm = () => {
+const UploadForm = (/*  알맞은 props를 전달해주세요. */) => {
   const router = useRouter();
   const classes = useStyles();
   const uid = uuidv4();
@@ -146,6 +146,7 @@ const UploadForm = () => {
   async function updateFeed() {
     /* 1. 피드를 업데이트 하기 위해, api에 전달해야하는 인자를 적어주세요 (4가지) */
     const updateParams = {
+      /* 채워주세요. */
       /* 채워주세요. */
       /* 채워주세요. */
       /* 채워주세요. */

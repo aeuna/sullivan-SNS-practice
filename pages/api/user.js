@@ -8,7 +8,7 @@ const db = firebase.firestore();
   URL : /api/user/
   method : GET
 */
-async function getUserInfo() {
+export async function getUserInfo() {
   const userRef = db.collection("myuser").doc(userId);
   const userDoc = await userRef.get();
   const userInfo = userDoc.data();

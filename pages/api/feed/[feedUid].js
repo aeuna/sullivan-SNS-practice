@@ -7,10 +7,11 @@ const db = firebase.firestore();
   URL : /api/feed/{feedUid}
   method : GET
 */
-async function getFeedDetail(feedUid) {
+export async function getFeedDetail(feedUid) {
   const feedRef = db.collection("feed").doc(feedUid);
   const feedDoc = await feedRef.get();
-  const feedDetail = feedDoc.data();
+  let feedDetail = feedDoc.data();
+  feedDetail.create_at = JSON.parse(JSON.stringify(feedDetail.create_at));
   return feedDetail;
 }
 

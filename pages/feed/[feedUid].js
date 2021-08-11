@@ -14,16 +14,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const getServerSideProps = async (context) => {
-  const { feedUid } = context.query;
-  /* 1.유저의 정보를 가져오기 위해 알맞은 api 요청을 보내주세요. */
-  const fetchUserInfo = await fetch(/* 채워주세요. */);
-  const user = await fetchUserInfo.json();
+  /* 1.context에서 무엇을 가져와야 할까요? */
+  const {/* 채워주세요. */} = context.query;
 
-  /* 2.한 피드의 디테일 정보를 가져오기 위해 알맞은 api 요청을 보내주세요. */
-  const fetchFeedDetail = await fetch(/* 채워주세요. */);
-  const feedDetail = await fetchFeedDetail.json();
+  /* 2. api폴더 속에서, 알맞은 함수를 불러와주세요. */
+  const user = await /* 채워주세요. */;
 
-  /* 3.전달해야 할 props를 return 해주세요. (3가지) */
+  /* 3. api폴더 속에서, 알맞은 함수를 불러와주세요. 파라미터필요 */
+  const feedDetail = await /* 채워주세요. */;
+
+  /* 4.전달해야 할 props를 return 해주세요. (3가지) */
   return {
     props: {
       /* 채워주세요. */

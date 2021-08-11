@@ -42,7 +42,7 @@ const PhotoItem = ({ feed }) => {
               />
             ) : (
               <img
-                src={feed.author.photoUrl}
+                src="images/sullivan.png"
                 alt={feed.uid}
                 className={classes.feedImg}
               />
