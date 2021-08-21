@@ -12,7 +12,7 @@ const edit = () => {
       <Card variant="outlined">
         <CardContent>
           {/*  알맞은 props를 전달해주세요. */}
-          <UploadForm feedUid={/* 채워주세요. */} />
+          <UploadForm feedUid={feedUid} />
         </CardContent>
       </Card>
     </div>

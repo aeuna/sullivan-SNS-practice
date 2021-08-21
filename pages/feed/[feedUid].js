@@ -1,7 +1,7 @@
 import { Grid, makeStyles } from "@material-ui/core";
 import { useRouter } from "next/router";
-import DetailFeed from "../../components/feed/DetailFeed";
-import Comment from "../../components/feed/Comment";
+import { getFeedDetail } from "../api/feed/[feedUid].js";
+import { getUserInfo } from "../api/user";
 import DetailFeed from "../../components/feed/DetailFeed";
 import Comment from "../../components/feed/Comment";
 
