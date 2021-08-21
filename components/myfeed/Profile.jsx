@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "../common/Avatar";
+import ProfileUpdatePopup from "../myfeed/ProfileUpdatePopup";
 
 const useStyles = makeStyles(() => ({
   profile: {
@@ -9,7 +10,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Profile = ({ user }) => {
+const Profile = ({ user, getUserInfo }) => {
   const classes = useStyles();
 
   return (
@@ -46,7 +47,7 @@ const Profile = ({ user }) => {
                 </Grid>
                 <Grid item>
                   <Typography variant="body1" component="h2" paragraph>
-                    좋아하는 피드 수 {user.likeFeeds.length}{" "}
+                    좋아하는 피드 수 {user.likeFeeds.length}
                     {/* 좋아하는 피드 수 */}
                   </Typography>
                 </Grid>
@@ -68,6 +69,7 @@ const Profile = ({ user }) => {
                 </a>
               </Typography>
             </Grid>
+            <ProfileUpdatePopup user={user} getUserInfo={getUserInfo} />
           </Grid>
         </Grid>
       </Grid>
