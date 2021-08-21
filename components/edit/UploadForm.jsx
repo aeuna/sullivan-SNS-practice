@@ -25,7 +25,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const UploadForm = (/*  알맞은 props를 전달해주세요. */) => {
+const UploadForm = ({ feedUid }) => {
   const router = useRouter();
   const classes = useStyles();
   const uid = uuidv4();
@@ -84,14 +84,14 @@ const UploadForm = (/*  알맞은 props를 전달해주세요. */) => {
   async function getFeedDetail() {
     try {
       /* 1.한 피드의 디테일 정보를 가져오는 api를 요청해주세요. */
-      const fetchFeedDetail = await fetch(/* 채워주세요. */);
+      const fetchFeedDetail = await fetch(`/api/feed/${feedUid}`);
       const feedDetail = await fetchFeedDetail.json();
 
       /* 2.가져온 데이터를 가지고 알맞은 상태변화를 시켜주세요. (4가지) */
-      /* 채워주세요. */
-      /* 채워주세요. */
-      /* 채워주세요. */
-      /* 채워주세요. */
+      setPhotoUrl(feedDetail.photoUrl);
+      setContent(feedDetail.content);
+      setLocation(feedDetail.location);
+      setTag(feedDetail.tag);
     } catch (e) {
       console.error(e);
     }
@@ -146,17 +146,17 @@ const UploadForm = (/*  알맞은 props를 전달해주세요. */) => {
   async function updateFeed() {
     /* 1. 피드를 업데이트 하기 위해, api에 전달해야하는 인자를 적어주세요 (5가지) */
     const updateParams = {
-      /* 채워주세요. */
-      /* 채워주세요. */
-      /* 채워주세요. */
-      /* 채워주세요. */
-      /* 채워주세요. */
+      content,
+      location,
+      tag,
+      author,
+      photoUrl,
     };
 
     try {
       /* 2. 피드의 업데이트를 위한 api에 요청을 보내주세요. */
-      const updateResult = await fetch(/* 채워주세요. */, {
-        method: /* 채워주세요. */,
+      const updateResult = await fetch(`/api/feed/${feedUid}`, {
+        method: "PATCH",
         body: JSON.stringify(updateParams),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
