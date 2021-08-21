@@ -16,6 +16,7 @@ const FeedIconBar = ({
   handleExpandComment,
   commentExpanded,
   likeFeeds,
+  setLikeFeeds,
 }) => {
   const [likeBtn, setLikeBtn] = useState({
     clicked: false,
@@ -37,7 +38,47 @@ const FeedIconBar = ({
     }
   }, []);
 
-  async function handleHeartClick() {}
+  async function handleHeartClick() {
+    try {
+      // 피드 좋아요 수 업데이트
+      let likeNum;
+      if (likeBtn.clicked) {
+        likeNum = feed.like -= 1;
+      } else {
+        likeNum = feed.like += 1;
+      }
+      await fetch(`/api/feed/${feed.uid}`, {
+        method: "PATCH",
+        body: JSON.stringify({ like: likeNum }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      // 사용자가 좋아요 한 피드 목록 업데이트
+      let newUserLikeFeeds = [];
+      if (likeBtn.clicked) {
+        newUserLikeFeeds = likeFeedList.filter((feedId) => feedId !== feed.uid);
+      } else {
+        newUserLikeFeeds = [...likeFeedList, feed.uid];
+      }
+      await fetch(`/api/user`, {
+        method: "PATCH",
+        body: JSON.stringify({ likeFeeds: newUserLikeFeeds }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+      setLikeBtn({
+        clicked: !likeBtn.clicked,
+        displayNum: likeNum,
+      });
+      if (type === "main") {
+        setLikeFeeds(newUserLikeFeeds);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }
 
   return (
     <CardActions disableSpacing>

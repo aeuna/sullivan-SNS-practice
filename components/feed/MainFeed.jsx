@@ -89,6 +89,7 @@ const Feed = ({ feed, user, likeFeeds, setLikeFeeds }) => {
           commentExpanded={commentExpanded}
           handleExpandComment={handleExpandComment}
           likeFeeds={likeFeeds}
+          setLikeFeeds={setLikeFeeds}
           type={"main"}
         />
         <Collapse in={commentExpanded} timeout="auto" unmountOnExit>
